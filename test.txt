@@ -1,0 +1,47 @@
+I need to create an app on android studio, that meets these requirements: it must use the MVVM (Model–View–ViewModel) architecture and a local database using Room. 
+the default package com.example.equipoocho
+
+
+
+
+set "BASE=C:\Users\SONIC2\Desktop\equipoOcho\app"
+
+mkdir "%BASE%\src\main\java\com\example\equipoocho\data\local"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\data\repo"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\domain\model"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\login"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\home"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\add"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\detail"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\edit"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\ui\util"
+mkdir "%BASE%\src\main\java\com\example\equipoocho\widget"
+mkdir "%BASE%\src\main\res\raw"
+mkdir "%BASE%\src\main\res\mipmap-anydpi"
+
+
+type nul > "%BASE%\src\main\java\com\example\equipoocho\data\local\AppDatabase.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\data\local\ProductDao.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\data\local\ProductEntity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\data\repo\InventoryRepository.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\domain\model\Product.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\login\LoginActivity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\login\SessionManager.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\home\HomeActivity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\home\HomeViewModel.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\home\ProductAdapter.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\add\AddProductActivity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\detail\ProductDetailActivity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\edit\EditProductActivity.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\ui\util\Formatters.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\widget\InventoryWidgetProvider.kt"
+type nul > "%BASE%\src\main\java\com\example\equipoocho\widget\WidgetToggleReceiver.kt"
+
+
+type nul > "%BASE%\src\main\res\xml\inventory_widget_info.xml"
+type nul > "%BASE%\src\main\res\raw\fingerprint.json"
+type nul > "%BASE%\src\main\res\mipmap-anydpi\ic_inventorywidget.png"
+
+echo.
+echo ✅ Estructura creada correctamente en: %BASE%
+pause

@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_toolbar"
+            app:titleTextColor="@color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Id: "
+                android:textStyle="bold"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/name_hint"
+                android:layout_marginTop="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/price_hint"
+                android:layout_marginTop="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/qty_hint"
+                android:layout_marginTop="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/edit"
+                android:enabled="false"
+                android:layout_marginTop="16dp"
+                app:cornerRadius="16dp"
+                app:backgroundTint="@color/orange_accent"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
