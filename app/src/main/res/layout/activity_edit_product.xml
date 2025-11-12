@@ -1,79 +1,79 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_overlay">
+    android:layout_width="match_parent"  <!-- El ScrollView ocupa todo el ancho disponible de la pantalla -->
+    android:layout_height="match_parent"  <!-- El ScrollView ocupa toda la altura de la pantalla -->
+    android:background="@color/black_overlay">  <!-- Fondo negro con opacidad definido en los recursos -->
 
-
+    <!-- LinearLayout principal para contener todos los elementos dentro del ScrollView -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="match_parent"  <!-- El LinearLayout ocupa el 100% del ancho disponible -->
+        android:layout_height="wrap_content"  <!-- La altura del LinearLayout se ajusta al contenido que tiene dentro -->
+        android:orientation="vertical">  <!-- Los elementos dentro del LinearLayout se apilan verticalmente -->
 
-
+        <!-- Barra de herramientas en la parte superior -->
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_toolbar"
-            app:titleTextColor="@color/white"/>
+            android:id="@+id/toolbar"  <!-- ID único para el Toolbar -->
+            android:layout_width="match_parent"  <!-- El Toolbar ocupa todo el ancho de la pantalla -->
+            android:layout_height="wrap_content"  <!-- La altura del Toolbar se ajusta según su contenido -->
+            android:background="@color/grey_toolbar"  <!-- Fondo del Toolbar con un color gris -->
+            app:titleTextColor="@color/white"/>  <!-- El color del texto del título del Toolbar es blanco -->
 
-
+        <!-- Contenedor para los campos de entrada, con un padding de 16dp -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"  <!-- El LinearLayout ocupa todo el ancho disponible -->
+            android:layout_height="wrap_content"  <!-- La altura del LinearLayout se ajusta al contenido dentro -->
+            android:padding="16dp"  <!-- Se agrega un padding de 16dp en todo el contenedor -->
+            android:orientation="vertical">  <!-- Los elementos dentro del LinearLayout se apilan verticalmente -->
 
-
+            <!-- Etiqueta de texto que muestra el Id (etiqueta visible solo como texto) -->
             <TextView
-                android:id="@+id/tvId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Id: "
-                android:textStyle="bold"/>
+                android:id="@+id/tvId"  <!-- ID único para este TextView -->
+                android:layout_width="wrap_content"  <!-- El TextView se ajusta al ancho del contenido -->
+                android:layout_height="wrap_content"  <!-- La altura se ajusta al contenido del TextView -->
+                android:text="Id: "  <!-- Texto que se mostrará, 'Id: ' -->
+                android:textStyle="bold"/>  <!-- El texto está en negrita -->
 
-
+            <!-- Campo de entrada para el nombre del producto -->
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="@string/name_hint"
-                android:layout_marginTop="8dp">
+                android:hint="@string/name_hint"  <!-- Hint o sugerencia para el campo, proveniente de los recursos de string -->
+                android:layout_marginTop="8dp">  <!-- Margen superior de 8dp entre este campo y el anterior -->
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:id="@+id/etName"  <!-- ID único para este campo de texto -->
+                    android:layout_width="match_parent"  <!-- El campo de texto ocupa todo el ancho disponible -->
+                    android:layout_height="wrap_content"/>  <!-- La altura del campo se ajusta al contenido -->
             </com.google.android.material.textfield.TextInputLayout>
 
-
+            <!-- Campo de entrada para el precio del producto -->
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="@string/price_hint"
-                android:layout_marginTop="8dp">
+                android:hint="@string/price_hint"  <!-- Hint o sugerencia para el campo de precio -->
+                android:layout_marginTop="8dp">  <!-- Margen superior de 8dp entre este campo y el anterior -->
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:id="@+id/etPrice"  <!-- ID único para este campo de texto -->
+                    android:layout_width="match_parent"  <!-- El campo de texto ocupa todo el ancho disponible -->
+                    android:layout_height="wrap_content"/>  <!-- La altura del campo se ajusta al contenido -->
             </com.google.android.material.textfield.TextInputLayout>
 
-
+            <!-- Campo de entrada para la cantidad del producto -->
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="@string/qty_hint"
-                android:layout_marginTop="8dp">
+                android:hint="@string/qty_hint"  <!-- Hint o sugerencia para el campo de cantidad -->
+                android:layout_marginTop="8dp">  <!-- Margen superior de 8dp entre este campo y el anterior -->
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etQty"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:id="@+id/etQty"  <!-- ID único para este campo de texto -->
+                    android:layout_width="match_parent"  <!-- El campo de texto ocupa todo el ancho disponible -->
+                    android:layout_height="wrap_content"/>  <!-- La altura del campo se ajusta al contenido -->
             </com.google.android.material.textfield.TextInputLayout>
 
-
+            <!-- Botón para editar los detalles del producto -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/edit"
-                android:enabled="false"
-                android:layout_marginTop="16dp"
-                app:cornerRadius="16dp"
-                app:backgroundTint="@color/orange_accent"
-                android:textColor="@color/white"/>
+                android:id="@+id/btnEdit"  <!-- ID único para el botón -->
+                android:layout_width="match_parent"  <!-- El botón ocupa todo el ancho disponible -->
+                android:layout_height="wrap_content"  <!-- La altura del botón se ajusta al contenido -->
+                android:text="@string/edit"  <!-- Texto en el botón obtenido desde los recursos de strings -->
+                android:enabled="false"  <!-- El botón está deshabilitado por defecto -->
+                android:layout_marginTop="16dp"  <!-- Margen superior de 16dp entre este botón y el campo anterior -->
+                app:cornerRadius="16dp"  <!-- Bordes redondeados del botón con un radio de 16dp -->
+                app:backgroundTint="@color/orange_accent"  <!-- Color de fondo del botón configurado en naranja -->
+                android:textColor="@color/white"/>  <!-- El texto del botón es de color blanco -->
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
