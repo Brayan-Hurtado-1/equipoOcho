@@ -28,28 +28,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
+            //tvName: mostrará el nombre del producto.
             <TextView android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
 
-
+            //tvUnitPrice: mostrará el precio por unidad.
             <TextView android:id="@+id/tvUnitPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Precio unidad"/>
 
-
+            //tvQty: mostrará la cantidad comprada o disponible.
             <TextView android:id="@+id/tvQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Cantidad"/>
 
-
+            //tvTotal: mostrará el total calculado (precio × cantidad).
             <TextView android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
