@@ -1,83 +1,83 @@
 <!-- Contenedor principal que organiza los elementos de la pantalla de forma vertical -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_overlay">
+    android:orientation="vertical"  <!-- Define la orientación de los elementos dentro del contenedor como vertical -->
+    android:layout_width="match_parent"  <!-- El ancho ocupa el 100% del ancho de la pantalla -->
+    android:layout_height="match_parent"  <!-- La altura ocupa el 100% de la pantalla -->
+    android:background="@color/black_overlay">  <!-- Se establece un color de fondo personalizado (negro translúcido) -->
 
     <!-- Barra de herramientas en la parte superior -->
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_toolbar"
-        app:titleTextColor="@color/white"/>
+        android:id="@+id/toolbar"  <!-- ID único para acceder al Toolbar desde el código Java/Kotlin -->
+        android:layout_width="match_parent"  <!-- El Toolbar ocupará todo el ancho de la pantalla -->
+        android:layout_height="wrap_content"  <!-- La altura del Toolbar se ajusta según su contenido -->
+        android:background="@color/grey_toolbar"  <!-- Color de fondo personalizado para el Toolbar -->
+        app:titleTextColor="@color/white"/>  <!-- Color del texto del título en el Toolbar (blanco) -->
 
     <!-- Contenedor vertical para los campos de entrada -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_width="match_parent"  <!-- El ancho ocupa el 100% del espacio disponible -->
+        android:layout_height="wrap_content"  <!-- La altura se ajusta al contenido dentro del contenedor -->
+        android:orientation="vertical"  <!-- Los elementos dentro de este LinearLayout se apilarán verticalmente -->
+        android:padding="16dp">  <!-- Se aplica un padding interno de 16dp alrededor del contenedor -->
 
         <!-- Campo de entrada para el código del producto -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/code_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:hint="@string/code_hint"  <!-- El texto de sugerencia que aparece cuando el campo está vacío -->
+            android:layout_width="match_parent"  <!-- El ancho ocupa el 100% disponible -->
+            android:layout_height="wrap_content">  <!-- La altura se ajusta al contenido del campo -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:id="@+id/etCode"  <!-- ID único para este campo de texto -->
+                android:layout_width="match_parent"  <!-- El campo de texto ocupa el 100% del ancho disponible -->
+                android:layout_height="wrap_content"/>  <!-- La altura del campo de texto se ajusta al contenido -->
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo de entrada para el nombre del producto -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/name_hint"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:hint="@string/name_hint"  <!-- Sugerencia del campo, obtenida de los recursos de string -->
+            android:layout_marginTop="8dp"  <!-- Se aplica un margen superior de 8dp para separar de otros elementos -->
+            android:layout_width="match_parent"  <!-- El ancho ocupa todo el espacio disponible -->
+            android:layout_height="wrap_content">  <!-- La altura ajustada al contenido del campo -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:id="@+id/etName"  <!-- ID único para este campo -->
+                android:layout_width="match_parent"  <!-- El campo de texto ocupa el 100% del ancho -->
+                android:layout_height="wrap_content"/>  <!-- La altura se ajusta al contenido del campo -->
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo de entrada para el precio del producto -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/price_hint"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:hint="@string/price_hint"  <!-- Sugerencia del campo, obtenida desde los recursos -->
+            android:layout_marginTop="8dp"  <!-- Margen superior de 8dp -->
+            android:layout_width="match_parent"  <!-- El campo de texto ocupa el 100% del ancho disponible -->
+            android:layout_height="wrap_content">  <!-- La altura se ajusta al contenido del campo -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:id="@+id/etPrice"  <!-- ID único para el campo de texto del precio -->
+                android:layout_width="match_parent"  <!-- El campo ocupa todo el ancho disponible -->
+                android:layout_height="wrap_content"/>  <!-- La altura se ajusta al contenido -->
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo de entrada para la cantidad del producto -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/qty_hint"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:hint="@string/qty_hint"  <!-- Texto de sugerencia para la cantidad -->
+            android:layout_marginTop="8dp"  <!-- Margen superior de 8dp para separar de otros campos -->
+            android:layout_width="match_parent"  <!-- Ancho ocupa todo el espacio disponible -->
+            android:layout_height="wrap_content">  <!-- La altura del campo se ajusta a su contenido -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etQty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:id="@+id/etQty"  <!-- ID único para este campo de entrada -->
+                android:layout_width="match_parent"  <!-- El campo de entrada ocupa el 100% del ancho -->
+                android:layout_height="wrap_content" />  <!-- La altura ajusta al contenido del campo -->
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Botón para guardar los cambios -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:enabled="false"
-            android:layout_marginTop="16dp"
-            app:cornerRadius="16dp"
-            app:backgroundTint="@color/orange_accent"
-            android:textColor="@color/white"/>
+            android:id="@+id/btnSave"  <!-- ID único para el botón -->
+            android:layout_width="match_parent"  <!-- El botón ocupa el 100% del ancho disponible -->
+            android:layout_height="wrap_content"  <!-- La altura del botón se ajusta a su contenido -->
+            android:text="@string/save"  <!-- Texto del botón obtenido desde los recursos -->
+            android:enabled="false"  <!-- El botón está deshabilitado por defecto -->
+            android:layout_marginTop="16dp"  <!-- Margen superior de 16dp para separar de otros elementos -->
+            app:cornerRadius="16dp"  <!-- Bordes redondeados con un radio de 16dp -->
+            app:backgroundTint="@color/orange_accent"  <!-- El color de fondo del botón es naranja (acento) -->
+            android:textColor="@color/white"/>  <!-- El texto del botón es de color blanco -->
     </LinearLayout>
 </LinearLayout>
