@@ -1,3 +1,4 @@
+<!-- Contenedor principal que organiza los elementos de la pantalla de forma vertical -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -5,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black_overlay">
 
+    <!-- Barra de herramientas en la parte superior -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -12,12 +14,14 @@
         android:background="@color/grey_toolbar"
         app:titleTextColor="@color/white"/>
 
+    <!-- Contenedor vertical para los campos de entrada -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Campo de entrada para el código del producto -->
         <com.google.android.material.textfield.TextInputLayout
             android:hint="@string/code_hint"
             android:layout_width="match_parent"
@@ -28,6 +32,7 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo de entrada para el nombre del producto -->
         <com.google.android.material.textfield.TextInputLayout
             android:hint="@string/name_hint"
             android:layout_marginTop="8dp"
@@ -39,6 +44,7 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo de entrada para el precio del producto -->
         <com.google.android.material.textfield.TextInputLayout
             android:hint="@string/price_hint"
             android:layout_marginTop="8dp"
@@ -50,6 +56,7 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo de entrada para la cantidad del producto -->
         <com.google.android.material.textfield.TextInputLayout
             android:hint="@string/qty_hint"
             android:layout_marginTop="8dp"
@@ -58,9 +65,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etQty"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Botón para guardar los cambios -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
