@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeInventoryFragment">
+    app:startDestination="@id/loginFragment"> <!-- i don need to start up nothing -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.equipoOcho.view.fragment.LoginFragment"
+        android:label="Login">
+
+        <!-- acción para ir al home -->
+        <deepLink
+            app:uri="inventory://open_login_from_widget" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_homeInventoryFragment"
+            app:destination="@id/homeInventoryFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/homeInventoryFragment"

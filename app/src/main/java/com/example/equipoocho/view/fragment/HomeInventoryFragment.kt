@@ -12,6 +12,13 @@ import com.example.equipoOcho.R
 import com.example.equipoOcho.databinding.FragmentHomeInventoryBinding
 import com.example.equipoOcho.view.adapter.InventoryAdapter
 import com.example.equipoOcho.viewmodel.InventoryViewModel
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.os.Build
+import android.widget.Toast
+import com.example.equipoOcho.view.widget.InventoryWidgetProvider
+
+
 class HomeInventoryFragment : Fragment() {
     private lateinit var binding: FragmentHomeInventoryBinding
     private val inventoryViewModel: InventoryViewModel by viewModels()
@@ -63,5 +70,32 @@ class HomeInventoryFragment : Fragment() {
             binding.progress.isVisible = status
         }
     }
+
+    private fun requestPinWidget() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val appWidgetManager = AppWidgetManager.getInstance(requireContext())
+            val myProvider = ComponentName(
+                requireContext(),
+                InventoryWidgetProvider::class.java
+            )
+
+            if (appWidgetManager.isRequestPinAppWidgetSupported) {
+                appWidgetManager.requestPinAppWidget(myProvider, null, null)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Agrega el widget desde la pantalla de inicio.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "En esta versión de Android agrega el widget desde la pantalla de inicio.",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
 
 }
