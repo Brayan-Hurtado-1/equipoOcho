@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!-- No usas variables por ahora, lo dejamos vacío -->
+        <!-- vacío por ahora -->
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:background="@color/login_background_dark">
 
+        <!-- Imagen inventario arriba derecha -->
+        <ImageView
+            android:id="@+id/ivInventory"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="90dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_inventory_header"
+            android:contentDescription="@string/desc_inventory_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Título Inventory -->
         <TextView
-            android:id="@+id/tvLoginTitle"
+            android:id="@+id/tvInventoryTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ventana Login (HU 2.0)"
-            android:textSize="22sp"
+            android:layout_marginTop="1dp"
+            android:text="Inventory"
+            android:textColor="@color/inventory_login_orange"
+            android:textSize="40sp"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:fontFamily="@font/inventory_title"
+            app:layout_constraintTop_toBottomOf="@id/ivInventory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <EditText
-            android:id="@+id/etUser"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Usuario"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="16dp" />
+        <!-- Animación JSON huella digital -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieFingerprint"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="50dp"
+            app:lottie_rawRes="@raw/fingerprint_animation"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:layout_marginBottom="24dp" />
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Iniciar sesión" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

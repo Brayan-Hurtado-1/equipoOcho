@@ -7,5 +7,8 @@
     <color name="backgroudColorBtn">#009688</color>
     <color name="inventory_orange">#e7522e</color>
     <color name="inventory_icon_orange">#FA8523</color>
+    <color name="login_background_dark">#212121</color>
+    <color name="inventory_login_orange">#FF6F00</color>
+
 
 </resources>
