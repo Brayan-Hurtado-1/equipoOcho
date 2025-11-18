@@ -22,4 +22,6 @@ class InventoryAdapter(private val listInventory:MutableList<Inventory>, private
         val inventory = listInventory[position]
         holder.setItemInventory(inventory)
     }
+
+
 }

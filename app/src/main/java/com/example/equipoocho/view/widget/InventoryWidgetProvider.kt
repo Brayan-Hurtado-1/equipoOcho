@@ -7,13 +7,14 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
 import android.widget.RemoteViews
 import com.example.equipoOcho.R
 import com.example.equipoOcho.data.InventoryDB
+import com.example.equipoOcho.view.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import java.text.DecimalFormat
-import com.example.equipoOcho.view.MainActivity
 
 class InventoryWidgetProvider : AppWidgetProvider() {
 
@@ -46,7 +47,9 @@ class InventoryWidgetProvider : AppWidgetProvider() {
             appWidgetManager: AppWidgetManager,
             appWidgetId: Int
         ) {
-            // 1. Obtener total inventario desde Room (bloqueante pero simple)
+            Log.d("InventoryWidget", "updateAppWidget id=$appWidgetId")
+
+            // 1. Obtener total de inventario desde Room
             val total = runBlocking(Dispatchers.IO) {
                 val dao = InventoryDB.getDatabase(context).inventoryDao()
                 dao.getTotalInventoryValue() ?: 0.0
@@ -59,7 +62,7 @@ class InventoryWidgetProvider : AppWidgetProvider() {
             views.setTextViewText(R.id.tvInventoryTitle, "Inventory")
             views.setTextViewText(R.id.tvManage, "Gestionar inventario")
 
-            // 3. Formateo del saldo: 3.326,00
+            // 3. Formateo del saldo
             val formatter = DecimalFormat("#,##0.00").apply {
                 decimalFormatSymbols = decimalFormatSymbols.apply {
                     groupingSeparator = '.'
@@ -79,7 +82,7 @@ class InventoryWidgetProvider : AppWidgetProvider() {
                 views.setImageViewResource(R.id.ivEye, R.drawable.ic_eye_open_white)
             }
 
-            // 5. CLICK EN EL OJO → BROADCAST PARA TOGGLE
+            // 5. CLICK EN EL OJO → broadcast para alternar visibilidad
             val toggleIntent = Intent(context, InventoryWidgetProvider::class.java).apply {
                 action = ACTION_TOGGLE_VISIBILITY
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -87,29 +90,31 @@ class InventoryWidgetProvider : AppWidgetProvider() {
 
             val togglePendingIntent = PendingIntent.getBroadcast(
                 context,
-                appWidgetId, // requestCode único
+                appWidgetId, // requestCode único por widget
                 toggleIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
+
             views.setOnClickPendingIntent(R.id.ivEye, togglePendingIntent)
+            // (opcional) views.setOnClickPendingIntent(R.id.tvBalance, togglePendingIntent)
 
-            // 6. CLICK EN “Gestionar inventario” → abrir MainActivity (login)
+            // 6. CLICK EN “Gestionar inventario” → abrir MainActivity directamente
             val manageIntent = Intent(context, MainActivity::class.java).apply {
+                // Muy importante: marcar que viene del widget
+                putExtra("open_login_from_widget", true)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                putExtra("open_login_from_widget", true)   // ⬅️ MARCADOR
             }
-
             val managePendingIntent = PendingIntent.getActivity(
                 context,
-                appWidgetId + 1000,
+                10_000 + appWidgetId, // requestCode distinto al del ojo
                 manageIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )
 
             views.setOnClickPendingIntent(R.id.ivManageIcon, managePendingIntent)
             views.setOnClickPendingIntent(R.id.tvManage, managePendingIntent)
 
-
+            // 7. Actualizar el widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
@@ -125,32 +130,33 @@ class InventoryWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        super.onReceive(context, intent)
+        val action = intent.action
+        Log.d("InventoryWidget", "onReceive action=$action")
 
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        val thisWidget = ComponentName(context, InventoryWidgetProvider::class.java)
+        if (action == ACTION_TOGGLE_VISIBILITY) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val thisWidget = ComponentName(context, InventoryWidgetProvider::class.java)
 
-        when (intent.action) {
-            ACTION_TOGGLE_VISIBILITY -> {
-                val appWidgetId = intent.getIntExtra(
-                    AppWidgetManager.EXTRA_APPWIDGET_ID,
-                    AppWidgetManager.INVALID_APPWIDGET_ID
-                )
+            val appWidgetId = intent.getIntExtra(
+                AppWidgetManager.EXTRA_APPWIDGET_ID,
+                AppWidgetManager.INVALID_APPWIDGET_ID
+            )
 
-                if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
-                    val current = isBalanceVisible(context, appWidgetId)
-                    setBalanceVisible(context, appWidgetId, !current)
-                    updateAppWidget(context, appWidgetManager, appWidgetId)
-                } else {
-                    // Por si acaso, actualizar todos
-                    val ids = appWidgetManager.getAppWidgetIds(thisWidget)
-                    ids.forEach { id ->
-                        val current = isBalanceVisible(context, id)
-                        setBalanceVisible(context, id, !current)
-                        updateAppWidget(context, appWidgetManager, id)
-                    }
+            if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
+                val current = isBalanceVisible(context, appWidgetId)
+                setBalanceVisible(context, appWidgetId, !current)
+                updateAppWidget(context, appWidgetManager, appWidgetId)
+            } else {
+                val ids = appWidgetManager.getAppWidgetIds(thisWidget)
+                ids.forEach { id ->
+                    val current = isBalanceVisible(context, id)
+                    setBalanceVisible(context, id, !current)
+                    updateAppWidget(context, appWidgetManager, id)
                 }
             }
+            return
         }
+
+        super.onReceive(context, intent)
     }
 }

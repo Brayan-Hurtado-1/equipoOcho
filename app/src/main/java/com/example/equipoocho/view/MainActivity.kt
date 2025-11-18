@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.equipoOcho.R
+import com.example.equipoOcho.utils.SessionManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,11 +31,19 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.navigationContainer) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Nos aseguramos de ir al LoginFragment
-        if (navController.currentDestination?.id != R.id.loginFragment) {
-            navController.navigate(R.id.loginFragment)
+        // Cargamos el gráfico de navegación
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
+        // Si la sesión está activa → ir directo a Home
+        if (SessionManager.isSessionActive(this)) {
+            navGraph.setStartDestination(R.id.homeInventoryFragment)
+        } else {
+            navGraph.setStartDestination(R.id.loginFragment)
         }
+
+        navController.graph = navGraph
     }
+
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
