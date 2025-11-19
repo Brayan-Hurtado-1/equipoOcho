@@ -55,7 +55,7 @@
     <!-- Saldo / asteriscos -->
     <TextView
         android:id="@+id/tvBalance"
-        android:layout_width="70dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
         android:layout_below="@+id/ivEye"
         android:layout_alignParentEnd="true"
@@ -63,7 +63,11 @@
         android:text="$ ****"
         android:textColor="@android:color/white"
         android:textSize="20sp"
+        android:ellipsize="none"
+        android:singleLine="true"
+        android:gravity="end"
         android:textStyle="bold" />
+
 
     <!-- Texto Gestionar inventario -->
     <TextView

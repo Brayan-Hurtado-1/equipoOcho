@@ -7,79 +7,147 @@
         <variable
             name="viewModel"
             type="com.example.equipoOcho.viewmodel.InventoryViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
+        android:background="#CC000000"
         android:padding="20dp"
-        tools:context=".view.fragment.AddItemFragment">
+        tools:context=".view.fragment.ItemEditFragment">
 
-        <TextView
-            android:id="@+id/tvNameEdit"
-            android:layout_width="wrap_content"
+        <!-- TOOLBAR -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarEdit"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Editar Artículo"
-            android:textSize="25sp"
+            android:background="#424242"
+            app:title="Editar producto"
+            app:titleTextColor="@android:color/white"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_arrow_back_white_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
+        <!-- ID (solo lectura) -->
+        <TextView
+            android:id="@+id/tvLabelId"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="Id:"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/toolbarEdit"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="1234"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/tvLabelId"
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelId"
+            app:layout_constraintStart_toEndOf="@id/tvLabelId" />
+
+        <!-- NOMBRE ARTÍCULO -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNameEdit"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:hint="Nombre artículo"
-            android:background="@drawable/bg_redondo"
-            android:padding="12dp"
-            android:inputType="text"
-            android:maxLength="10"
-            app:layout_constraintTop_toBottomOf="@id/tvNameEdit"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@android:color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelId"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <EditText
-            android:id="@+id/etPrice"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="40"
+                android:textColor="@android:color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- PRECIO -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPriceEdit"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:hint="Precio"
-            android:background="@drawable/bg_redondo"
-            android:padding="12dp"
-            android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@id/etName"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@android:color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tilNameEdit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <EditText
-            android:id="@+id/etQuantity"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="20"
+                android:textColor="@android:color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- CANTIDAD -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilQuantityEdit"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:hint="Cantidad"
-            android:background="@drawable/bg_redondo"
-            android:padding="12dp"
-            android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@id/etPrice"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@android:color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tilPriceEdit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textColor="@android:color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- BOTÓN EDITAR -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEdit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="24dp"
             android:text="Editar"
-            app:layout_constraintTop_toBottomOf="@+id/etQuantity"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:enabled="false"
+            android:alpha="0.5"
+            app:cornerRadius="50dp"
+            app:backgroundTint="@color/inventory_orange"
+            app:layout_constraintTop_toBottomOf="@id/tilQuantityEdit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
