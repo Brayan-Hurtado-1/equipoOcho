@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!-- vacío por ahora -->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/login_background_dark">
+
+        <!-- Imagen inventario arriba derecha -->
+        <ImageView
+            android:id="@+id/ivInventory"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="90dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_inventory_header"
+            android:contentDescription="@string/desc_inventory_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Título Inventory -->
+        <TextView
+            android:id="@+id/tvInventoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="Inventory"
+            android:textColor="@color/inventory_login_orange"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inventory_title"
+            app:layout_constraintTop_toBottomOf="@id/ivInventory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Animación JSON huella digital -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieFingerprint"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="50dp"
+            app:lottie_rawRes="@raw/fingerprint_animation"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
