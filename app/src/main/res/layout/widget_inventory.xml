@@ -1,77 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
+    android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#CC000000"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:background="@drawable/bg_inventory_widget">
 
-
-    <TextView
-        android:id="@+id/txtInventory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inventory"
-        android:textColor="#E7522E"
-        android:layout_below="@id/logo"/>
-
-    <TextView
-        android:id="@+id/txtQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quantity_inventory"
-        android:textColor="@android:color/white"
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"/>
+        android:src="@drawable/ic_inventory_logo" />
 
+    <!-- Título Inventory -->
     <TextView
-        android:id="@+id/txtBalance"
+        android:id="@+id/tvInventoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hidden_balance"
-        android:textColor="@android:color/white"
+        android:layout_below="@id/ivLogo"
+        android:layout_alignStart="@id/ivLogo"
+        android:layout_marginTop="4dp"
+        android:text="Inventory"
+        android:textColor="#e7522e"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_below="@id/txtQuestion"
-        android:layout_alignParentEnd="true"/>
+        android:textSize="16sp" />
 
+    <!-- Texto ¿Cuánto tengo de inventario? arriba derecha -->
     <TextView
-        android:id="@+id/txtManage"
+        android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/manage_inventory"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="55dp"
+        android:text="¿Cuánto tengo de inventario?"
         android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- Ícono ojo (toggle) -->
+    <ImageView
+        android:id="@+id/ivEye"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/txtBalance"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginStart="0dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_eye_open_white" />
 
-
-    <!-- Logo arriba izquierda -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@android:drawable/ic_menu_view"
-        android:layout_alignParentStart="true"/>
-
-    <!-- Ojo toggle (arriba derecha) -->
-    <ImageView
-        android:id="@+id/btnToggle"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+    <!-- Saldo / asteriscos -->
+    <TextView
+        android:id="@+id/tvBalance"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivEye"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-4dp"
-        android:src="@android:drawable/ic_menu_view"
-        app:tint="@android:color/white"/> <!-- Cambiado a app:tint -->
+        android:layout_marginTop="10dp"
+        android:text="$ ****"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:ellipsize="none"
+        android:singleLine="true"
+        android:gravity="end"
+        android:textStyle="bold" />
 
 
+    <!-- Texto Gestionar inventario -->
+    <TextView
+        android:id="@+id/tvManage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/ivManageIcon"
+        android:layout_marginEnd="4dp"
+        android:text="Gestionar inventario"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
+    <!-- Ícono naranja para gestionar -->
     <ImageView
-        android:id="@+id/btnManage"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_toLeftOf="@id/txtManage"
-        android:layout_below="@id/txtBalance"
-        android:layout_marginRight="8dp"
-        android:src="@android:drawable/ic_menu_manage"
-        app:tint="#FA8523"/> <!-- Cambiado a app:tint -->
+        android:id="@+id/ivManageIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_manage_orange" />
+
 </RelativeLayout>
