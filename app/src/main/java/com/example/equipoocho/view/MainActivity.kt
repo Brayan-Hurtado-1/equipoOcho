@@ -14,36 +14,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // ¿Viene del widget?
-        val fromWidget = intent?.getBooleanExtra("open_login_from_widget", false) ?: false
-
-        // Si NO viene del widget, cerramos y no mostramos nada
-        if (!fromWidget) {
-            finish()
-            return
-        }
-
-        // Solo si viene del widget inicializamos la UI
         setContentView(R.layout.activity_main)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navigationContainer) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Cargamos el gráfico de navegación
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
-        // Si la sesión está activa → ir directo a Home
-        if (SessionManager.isSessionActive(this)) {
-            navGraph.setStartDestination(R.id.homeInventoryFragment)
-        } else {
-            navGraph.setStartDestination(R.id.loginFragment)
-        }
+        val fromWidget = intent?.getBooleanExtra("open_login_from_widget", false) ?: false
+
+        navGraph.setStartDestination(
+            when {
+                SessionManager.isSessionActive(this) -> R.id.homeInventoryFragment
+                else -> R.id.loginFragment
+            }
+        )
 
         navController.graph = navGraph
-    }
 
+        // Si viene del widget y no hay sesión, igual cae en el loginFragment,
+        // así que no necesitamos cerrar nada aquí.
+    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -51,12 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         val fromWidget = intent.getBooleanExtra("open_login_from_widget", false)
         if (fromWidget && ::navController.isInitialized) {
+            // Si el widget pide abrir login, lo llevamos allá
             if (navController.currentDestination?.id != R.id.loginFragment) {
                 navController.navigate(R.id.loginFragment)
             }
-        } else if (!fromWidget) {
-            // Si llega un intent que NO viene del widget, cerramos
-            finish()
         }
+        // Ya NO hacemos finish() si !fromWidget
     }
 }
