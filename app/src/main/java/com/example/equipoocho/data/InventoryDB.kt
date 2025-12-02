@@ -9,7 +9,7 @@ import com.example.equipoOcho.utils.Constants.NAME_BD
 
 @Database(
     entities = [Inventory::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 abstract class InventoryDB : RoomDatabase() {
@@ -29,7 +29,7 @@ abstract class InventoryDB : RoomDatabase() {
                     NAME_BD
                 )
                     // Para desarrollo, si cambias el schema y no quieres migraciones:
-                    // .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

@@ -1,11 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.EquipoOcho" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.equipoOcho" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-            <item name="android:statusBarColor">@color/black</item>
-            <item name="android:navigationBarColor">@color/black</item>
     </style>
 
-    <style name="Theme.EquipoOcho" parent="Base.Theme.EquipoOcho" />
+    <style name="Theme.equipoOcho" parent="Base.Theme.equipoOcho" />
 </resources>

@@ -55,16 +55,18 @@ class AddItemFragment : Fragment() {
 
     /** Guarda el producto en Room y vuelve al Home */
     private fun saveInventory() {
-        val codeText = binding.etCode.text.toString().trim()
+        //val codeText = binding.etCode.text.toString().trim()
         val name = binding.etName.text.toString().trim()
         val priceText = binding.etPrice.text.toString().trim()
         val quantityText = binding.etQuantity.text.toString().trim()
 
+        val id = binding.etCode.text.toString().trim().toInt()
         val price = priceText.toLong()          // hasta 20 dígitos
         val quantity = quantityText.toInt()     // hasta 4 dígitos
 
         // TODO: si tu data class Inventory tiene un campo "code", pásalo aquí
         val inventory = Inventory(
+            id = id,
             name = name,
             price = price.toInt(),   // ajusta al tipo real de tu modelo
             quantity = quantity

@@ -1,22 +1,9 @@
 <resources>
     <string name="app_name">equipoOcho</string>
-    <string name="inventory">Inventory</string>
-    <string name="login_title">Autenticación con Biometría</string>
-    <string name="login_sub">Ingrese su huella digital</string>
-    <string name="cancel">Cancelar</string>
-    <string name="manage_inventory">Gestionar inventario</string>
-    <string name="how_much">¿Cuánto tengo de inventario?</string>
-    <string name="add_product">Agregar producto</string>
-    <string name="detail_product">Detalle del producto</string>
-    <string name="edit_product">Editar producto</string>
-    <string name="code_hint">Código producto</string>
-    <string name="name_hint">Nombre artículo</string>
-    <string name="price_hint">Precio</string>
-    <string name="qty_hint">Cantidad</string>
-    <string name="save">Guardar</string>
-    <string name="edit">Editar</string>
-    <string name="delete">Eliminar</string>
-    <string name="logout">Cerrar sesión</string>
-    <string name="quantity_inventory">¿Cuánto tengo de inventario?</string>
-    <string name="hidden_balance">$ ****</string>
+    <string name="tituloInventario">Inventario</string>
+    <string name="desc_inventory_image">Imagen de inventario</string>
+    <string name="desc_fingerprint_animation">Animación de huella digital</string>
+
+
+
 </resources>

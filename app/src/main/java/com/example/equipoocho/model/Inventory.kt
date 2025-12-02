@@ -6,8 +6,8 @@ import java.io.Serializable
 
 @Entity
 data class Inventory(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     val name: String,
     val price: Int,
-    val quantity: Int): Serializable
+    val quantity: Int= 0): Serializable
