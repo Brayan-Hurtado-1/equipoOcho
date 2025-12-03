@@ -1,6 +1,6 @@
 package com.example.equipoOcho.viewmodel
 
-import android.app.Application
+
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.equipoOcho.model.Inventory
 import com.example.equipoOcho.model.ProductModelResponse
@@ -26,8 +26,6 @@ class InventoryViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    @Mock
-    lateinit var application: Application
 
     @Mock
     lateinit var repository: InventoryRepository
@@ -37,7 +35,7 @@ class InventoryViewModelTest {
     @Before
     fun setUp() {
         // ViewModel with mocked repository
-        viewModel = InventoryViewModel(application, repository)
+        viewModel = InventoryViewModel(repository)
         println(">>> setUp: InventoryViewModel created with mocked repository")
     }
 

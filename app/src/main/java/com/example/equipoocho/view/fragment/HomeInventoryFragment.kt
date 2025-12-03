@@ -20,9 +20,9 @@ import com.example.equipoOcho.view.adapter.InventoryAdapter
 import com.example.equipoOcho.view.widget.InventoryWidgetProvider
 import com.example.equipoOcho.viewmodel.InventoryViewModel
 import com.example.equipoOcho.utils.SessionManager
+import dagger.hilt.android.AndroidEntryPoint
 
-
-
+@AndroidEntryPoint
 class HomeInventoryFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeInventoryBinding

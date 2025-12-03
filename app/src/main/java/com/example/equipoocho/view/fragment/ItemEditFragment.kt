@@ -12,7 +12,10 @@ import com.example.equipoOcho.R
 import com.example.equipoOcho.databinding.FragmentItemEditBinding
 import com.example.equipoOcho.model.Inventory
 import com.example.equipoOcho.viewmodel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class ItemEditFragment : Fragment() {
 
     private lateinit var binding: FragmentItemEditBinding
